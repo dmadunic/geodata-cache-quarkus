@@ -1,0 +1,59 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 0,
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "geodataRestQuarkus",
+    "blueprints": [
+      {
+        "name": "generator-jhipster-quarkus",
+        "version": "2.0.0-beta.2"
+      }
+    ],
+    "buildTool": "maven",
+    "cacheProvider": "caffeine",
+    "clientFramework": "angularX",
+    "clientPackageManager": "npm",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1660670377042,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "dtoSuffix": "DTO",
+    "enableGradleEnterprise": false,
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "entities": ["Country", "Currency"],
+    "entitySuffix": "",
+    "gradleEnterpriseHost": "",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "7.9.1",
+    "jwtSecretKey": "YTE0ZTI2NDJhMTNlNGYzZDMwYTVmZTRhNDg2ZmVkYjEzNzVjMmU2YTI5MTI3NjZlZmU4NDIwNGM5N2ZhODlmODdjMzAyZGIzN2RhY2YwNTcxY2IyOGUyNjIyNjZlOWJiOTY4ZDE1NTRjN2I3MWY1MjQ3ZDYwMzUxM2FlMDlkY2M=",
+    "languages": ["en", "hr"],
+    "lastLiquibaseTimestamp": 1660670497000,
+    "messageBroker": false,
+    "nativeLanguage": "en",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-quarkus",
+        "version": "2.0.0-beta.2"
+      }
+    ],
+    "packageFolder": "com/ag04/geodata",
+    "packageName": "com.ag04.geodata",
+    "pages": [],
+    "prodDatabaseType": "postgresql",
+    "reactive": false,
+    "searchEngine": false,
+    "serverPort": "8080",
+    "serviceDiscoveryType": false,
+    "skipCheckLengthOfIdentifier": false,
+    "skipClient": true,
+    "skipFakeData": false,
+    "skipUserManagement": false,
+    "testFrameworks": [],
+    "websocket": false,
+    "withAdminUi": true
+  }
+}
