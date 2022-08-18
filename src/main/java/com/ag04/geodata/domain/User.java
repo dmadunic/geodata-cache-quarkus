@@ -2,7 +2,6 @@ package com.ag04.geodata.domain;
 
 import com.ag04.geodata.config.Constants;
 import com.ag04.geodata.config.Constants;
-import io.quarkus.cache.CacheResult;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import io.quarkus.panache.common.Page;
 import io.quarkus.runtime.annotations.RegisterForReflection;
@@ -191,12 +190,12 @@ public class User extends PanacheEntityBase implements Serializable {
         return find("FROM User u LEFT JOIN FETCH u.authorities WHERE u.id = ?1", id).firstResultOptional();
     }
 
-    @CacheResult(cacheName = Constants.USERS_BY_LOGIN_CACHE)
+    //@CacheResult(cacheName = Constants.USERS_BY_LOGIN_CACHE)
     public static Optional<User> findOneWithAuthoritiesByLogin(String login) {
         return find("FROM User u LEFT JOIN FETCH u.authorities WHERE u.login = ?1", login).firstResultOptional();
     }
 
-    @CacheResult(cacheName = Constants.USERS_BY_EMAIL_CACHE)
+    //@CacheResult(cacheName = Constants.USERS_BY_EMAIL_CACHE)
     public static Optional<User> findOneWithAuthoritiesByEmailIgnoreCase(String email) {
         return find("FROM User u LEFT JOIN FETCH u.authorities WHERE LOWER(u.login) = LOWER(?1)", email).firstResultOptional();
     }

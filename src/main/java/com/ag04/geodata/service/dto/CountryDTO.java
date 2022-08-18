@@ -1,6 +1,8 @@
 package com.ag04.geodata.service.dto;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
+import io.undertow.server.handlers.SetAttributeHandler.ClearBuilder;
+
 import java.io.Serializable;
 import java.util.Objects;
 import javax.validation.constraints.*;
@@ -33,6 +35,38 @@ public class CountryDTO implements Serializable {
 
     @NotNull
     public Boolean active;
+
+    public CountryDTO() {
+        // default constructor
+    }
+
+    public CountryDTO(Long id, @NotNull String name, @NotNull @Size(max = 20) String code,
+            @NotNull @Size(max = 2) String codeA2, @NotNull @Size(max = 3) String codeA3, @Size(max = 255) String flag,
+            @NotNull Boolean active) {
+        this.id = id;
+        this.name = name;
+        this.code = code;
+        this.codeA2 = codeA2;
+        this.codeA3 = codeA3;
+        this.flag = flag;
+        this.active = active;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Override
     public boolean equals(Object o) {

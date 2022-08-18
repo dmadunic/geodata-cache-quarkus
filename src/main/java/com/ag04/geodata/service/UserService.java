@@ -8,7 +8,6 @@ import com.ag04.geodata.security.AuthoritiesConstants;
 import com.ag04.geodata.security.BCryptPasswordHasher;
 import com.ag04.geodata.security.RandomUtil;
 import com.ag04.geodata.service.dto.UserDTO;
-import io.quarkus.cache.CacheInvalidate;
 import io.quarkus.panache.common.Page;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -262,9 +261,9 @@ public class UserService {
         }
     }
 
-    @CacheInvalidate(cacheName = Constants.USERS_BY_EMAIL_CACHE)
+    //@CacheInvalidate(cacheName = Constants.USERS_BY_EMAIL_CACHE)
     public void clearUserCachesByEmail(String email) {}
 
-    @CacheInvalidate(cacheName = Constants.USERS_BY_LOGIN_CACHE)
+    //@CacheInvalidate(cacheName = Constants.USERS_BY_LOGIN_CACHE)
     public void clearUserCachesByLogin(String login) {}
 }

@@ -6,8 +6,8 @@
     "baseName": "geodataRestQuarkus",
     "blueprints": [
       {
-        "name": "generator-jhipster-quarkus",
-        "version": "2.0.0-beta.2"
+        "name": "generator-jhipster-quarkus-dm",
+        "version": "2.0.2"
       }
     ],
     "buildTool": "maven",

@@ -1,5 +1,6 @@
 package com.ag04.geodata.service.impl;
 
+import com.ag04.geodata.cache.annotations.Cached;
 import com.ag04.geodata.domain.Country;
 import com.ag04.geodata.service.CountryService;
 import com.ag04.geodata.service.Paged;
@@ -57,6 +58,7 @@ public class CountryServiceImpl implements CountryService {
      * @return the entity.
      */
     @Override
+    @Cached(cacheName = "com.ag04.geodata.service.dto.CountryDTO")
     public Optional<CountryDTO> findOne(Long id) {
         log.debug("Request to get Country : {}", id);
         return Country.findByIdOptional(id).map(country -> countryMapper.toDto((Country) country));
