@@ -1,11 +1,14 @@
 package com.ag04.geodata.service.impl;
 
-import com.ag04.geodata.cache.annotations.Cached;
+import com.ag04.geodata.cache.GetIdCacheKeyGenerator;
 import com.ag04.geodata.domain.Country;
 import com.ag04.geodata.service.CountryService;
 import com.ag04.geodata.service.Paged;
 import com.ag04.geodata.service.dto.CountryDTO;
 import com.ag04.geodata.service.mapper.CountryMapper;
+import com.ag04.quarkus.cache.annotations.CacheInvalidate;
+import com.ag04.quarkus.cache.annotations.CacheResult;
+
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import io.quarkus.panache.common.Page;
 import io.quarkus.panache.common.Sort;
@@ -20,7 +23,6 @@ import org.slf4j.LoggerFactory;
 @ApplicationScoped
 @Transactional
 public class CountryServiceImpl implements CountryService {
-
     private final Logger log = LoggerFactory.getLogger(CountryServiceImpl.class);
 
     @Inject
@@ -28,6 +30,7 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     @Transactional
+    @CacheInvalidate(cacheName = "com.ag04.geodata.service.dto.CountryDTO", keyGenerator = GetIdCacheKeyGenerator.class)
     public CountryDTO persistOrUpdate(CountryDTO countryDTO) {
         log.debug("Request to save Country : {}", countryDTO);
         var country = countryMapper.toEntity(countryDTO);
@@ -42,6 +45,7 @@ public class CountryServiceImpl implements CountryService {
      */
     @Override
     @Transactional
+    @CacheInvalidate(cacheName = "com.ag04.geodata.service.dto.CountryDTO")
     public void delete(Long id) {
         log.debug("Request to delete Country : {}", id);
         Country
@@ -58,7 +62,7 @@ public class CountryServiceImpl implements CountryService {
      * @return the entity.
      */
     @Override
-    @Cached(cacheName = "com.ag04.geodata.service.dto.CountryDTO")
+    @CacheResult(cacheName = "com.ag04.geodata.service.dto.CountryDTO")
     public Optional<CountryDTO> findOne(Long id) {
         log.debug("Request to get Country : {}", id);
         return Country.findByIdOptional(id).map(country -> countryMapper.toDto((Country) country));

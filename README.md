@@ -56,10 +56,26 @@ _Targeting a container environment_
 If you plan to run your application in a container, run:
 
 ```
-./mvnw package -Dnative -Dquarkus.native.container-build=true
+./mvnw package -Dnative -Dquarkus.native.container-build=true -DskipTests
 ```
 
 It will use a Docker container with GraalVM installed and produce an 64 bit Linux executable.
+
+### Building a docker image
+
+Once you have container executable ready execute:
+
+```
+docker build -f src/main/docker/Dockerfile.native -t ag04/geodata-test-quarkus:latest .
+```
+
+or (for a smaller image):
+
+```
+docker build -f src/main/docker/Dockerfile.native-distroless -t ag04/geodata-test-quarkus:latest .
+```
+
+
 
 ## Testing
 

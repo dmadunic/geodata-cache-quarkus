@@ -1,0 +1,24 @@
+replicaCount:
+  api: 2
+
+image: 
+  geodataRest: ag04/geodata-test-quarkus:latest
+
+# Local host postgres installation
+postgres:
+  deploy: false
+  port: 5432
+  host:
+    address: host.minikube.internal
+  database:
+    name: ag04
+    user: geodata
+    password: geodatapwd
+    schema: geodata
+
+geodata:
+  infinispan:
+    enabled: true
+    server_list: infinispan.default.svc.cluster.local:11222
+    user: admin
+    pwd: secret

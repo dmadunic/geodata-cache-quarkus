@@ -1,7 +1,9 @@
 {
-  "resources": [
-    {
-      "pattern": "jwt/privateKey.pem"
-    }
-  ]
+  "resources": {
+    "includes": [
+      {"pattern": "jwt/privateKey.pem"},
+      {"pattern": "\\Qprotostream/common-java-types.proto\\E"},
+      {"pattern": "\\Qprotostream/common-java-container-types.proto\\E"}
+    ]
+  }
 }

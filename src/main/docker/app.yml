@@ -2,27 +2,33 @@
 version: '3.8'
 services:
   geodatarestquarkus-app:
-    image: geodatarestquarkus
+    image: ag04/geodata-test-quarkus:latest
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
-      - SPRING_PROFILES_ACTIVE=prod,api-docs
+      - QUARKUS_PROFILE=prod,api-docs
       - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://geodatarestquarkus-postgresql:5432/geodataRestQuarkus
-      - SPRING_LIQUIBASE_URL=jdbc:postgresql://geodatarestquarkus-postgresql:5432/geodataRestQuarkus
-      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+      - JHIPSTER_SLEEP=2 # gives time for other services to boot before the application
+      - DATASOURCE_URL=jdbc:postgresql://host.docker.internal:5432/ag04
+      - DB_USER=geodata
+      - DB_PWD=geodatapwd
+      - DB_SCHEMA=geodata
+      # Set to true if database was not initialized
+      - GR_LIQUIBASE_ENABLED=false
+      - LIQUIBASE_CONTEXTS=dev
+      - MAIL_HOST=localhost
+      - MAIL_USER=someUsername
+      - MAIL_PWD=somePassword
+      - MAIL_PORT=25
+      - MAIL_SSL=false
+      - APP_BASE_URL=http://localhost:8080
+      - APP_MAIL_FROM=geodata@localhost
+      - INFINISPAN-SERVER-LIST=host.docker.internal:11222
+      - INFINISPAN-USER=admin
+      - INFINISPAN-PWD=secret
+    # On macOSX and Windows env comment the following two lines, they are linux workaround
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     # If you want to expose these ports outside your dev PC,
     # remove the "127.0.0.1:" prefix
     ports:
       - 127.0.0.1:8080:8080
-  geodatarestquarkus-postgresql:
-    image: postgres:14.4
-    # volumes:
-    #   - ~/volumes/jhipster/geodataRestQuarkus/postgresql/:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=geodataRestQuarkus
-      - POSTGRES_PASSWORD=
-      - POSTGRES_HOST_AUTH_METHOD=trust
-    # If you want to expose these ports outside your dev PC,
-    # remove the "127.0.0.1:" prefix
-    ports:
-      - 127.0.0.1:5432:5432
