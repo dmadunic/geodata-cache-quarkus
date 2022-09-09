@@ -16,4 +16,9 @@
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
+
+    <include file="config/liquibase/data/data-countries.xml"/>
+    <include file="config/liquibase/data/data-countries-flags.xml"/>
+    <include file="config/liquibase/data/data-currencies.xml"/>
+    
 </databaseChangeLog>

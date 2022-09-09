@@ -2,11 +2,48 @@
 
 This application was generated using JHipster 7.9.1 and JHipster Quarkus 2.0.0-beta.2, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v7.9.1](https://www.jhipster.tech/documentation-archive/v7.9.1).
 
+### 1. Database setup (optional)
+This step needs to be performed only if you have not already done it while preparing [geodataApp][].
+
+If you already do not have it, create a database named: **ag04**.
+Connect to database with user that has sufficient privileges and execute:
+
+```sql
+CREATE DATABASE ag04;
+```
+
+The next step is to create **geodata** user and his corresponding schema.
+To do so execute the following sql commands:
+
+```sql
+CREATE ROLE geodata NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT LOGIN PASSWORD 'geodatapwd';
+GRANT ALL PRIVILEGES ON DATABASE ag04 TO geodata;
+```
+
+Disconnect from "default" database, and connect to ag04 database using the same user as in the previous steps.
+
+```sql
+CREATE SCHEMA IF NOT EXISTS AUTHORIZATION "geodata";
+```
+
 ## Development
 
-To start your application in the dev profile, run:
+For **geodata-test-quarkus** application to be run you need to specify one runtime env variable **GR_LIQUIBASE_ENABLED** with value set to `true` or `false`.
+This variable controls if **geodata-test-quarkus** liquibase is enabled or not. 
 
+**It should not be enabled if you have already created all database objects and populated them (for example while running [geodataApp][]).**
+
+
+To start your application first run infinispan server by running (inside root application folder):
+```sh
+docker-compose -f src/main/docker/infinispan/infinispan.yml
+```
+
+Now start the application in the dev profile, run:
+
+```sh
     ./mvnw
+```
 
 For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].
 
@@ -105,3 +142,4 @@ To stop it and remove the container, run:
 [running tests page]: https://www.jhipster.tech/documentation-archive/v7.9.1/running-tests/
 [code quality page]: https://www.jhipster.tech/documentation-archive/v7.9.1/code-quality/
 [setting up continuous integration]: https://www.jhipster.tech/documentation-archive/v7.9.1/setting-up-ci/
+[geodataApp]: https://github.com/dmadunic/geodata-app
