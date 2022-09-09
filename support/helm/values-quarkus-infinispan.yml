@@ -1,5 +1,5 @@
 replicaCount:
-  api: 2
+  api: 1
 
 image: 
   geodataRest: ag04/geodata-test-quarkus:latest
@@ -17,6 +17,8 @@ postgres:
     schema: geodata
 
 geodata:
+  liquibase:
+    enabled: "false"
   infinispan:
     enabled: true
     server_list: infinispan.default.svc.cluster.local:11222

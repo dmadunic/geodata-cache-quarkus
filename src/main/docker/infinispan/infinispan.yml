@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  infinispan:
+    image: quay.io/infinispan/server:13.0
+    ports:
+      - 11222:11222
+    environment:
+      - USER=admin
+      - PASS=secret
