@@ -6,13 +6,12 @@ import com.ag04.geodata.service.CountryService;
 import com.ag04.geodata.service.Paged;
 import com.ag04.geodata.service.dto.CountryDTO;
 import com.ag04.geodata.service.mapper.CountryMapper;
-import com.ag04.quarkus.cache.annotations.CacheInvalidate;
-import com.ag04.quarkus.cache.annotations.CacheResult;
+import com.ag04.quarkus.cache.annotation.CacheInvalidate;
+import com.ag04.quarkus.cache.annotation.CacheResult;
 
-import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import io.quarkus.panache.common.Page;
 import io.quarkus.panache.common.Sort;
-import java.util.List;
+
 import java.util.Optional;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

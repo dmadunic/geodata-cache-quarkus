@@ -156,3 +156,6 @@ Desktop.ini
 ######################
 /coverage/
 /.nyc_output/
+
+# hide github credentials
+.env

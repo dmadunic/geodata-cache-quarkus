@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 import com.ag04.geodata.service.dto.CountryDTO;
 import com.ag04.geodata.service.dto.CurrencyDTO;
 import com.ag04.quarkus.cache.CacheManager;
-import com.ag04.quarkus.cache.impl.infinispan.CacheManagerRemoteImpl;
+import com.ag04.quarkus.cache.infinispan.CacheManagerRemoteImpl;
 
 import io.quarkus.runtime.StartupEvent;
 

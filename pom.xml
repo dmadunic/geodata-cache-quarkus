@@ -72,6 +72,20 @@
         </dependencies>
     </dependencyManagement>
 
+    <repositories>
+        <repository>
+            <id>github-ag04-quarkus-cache</id>
+            <url>https://maven.pkg.github.com/ag04/quarkus-cache</url>
+            <name>GitHub Packages Repo</name>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -164,6 +178,18 @@
             <artifactId>quarkus-resteasy-problem</artifactId>
             <version>${resteasy-problem.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.ag04.quarkus</groupId>
+            <artifactId>cache-api</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ag04.quarkus</groupId>
+            <artifactId>cache-infinispan</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-junit5</artifactId>
@@ -557,6 +583,12 @@
             </properties>
         </profile>
         <!-- jhipster-needle-maven-add-profile -->
+        <profile>
+            <id>github</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
     </profiles>
 </project>
 
