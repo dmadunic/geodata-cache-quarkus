@@ -173,12 +173,12 @@
         <dependency>
             <groupId>com.ag04.quarkus</groupId>
             <artifactId>cache-api</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.5</version>
         </dependency>
         <dependency>
             <groupId>com.ag04.quarkus</groupId>
             <artifactId>cache-redis</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.4</version>
         </dependency>
 
         <dependency>
