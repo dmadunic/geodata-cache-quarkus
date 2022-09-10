@@ -28,6 +28,53 @@ CREATE SCHEMA IF NOT EXISTS AUTHORIZATION "geodata";
 
 ## Development
 
+### Build
+To build the project after cloneing it you need to edit you {HOME}/.m2/settings.xml by adding the following
+
+```xml
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                      http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <activeProfiles>
+    <activeProfile>github</activeProfile>
+  </activeProfiles>
+
+  <profiles>
+    <profile>
+      <id>github</id>
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>https://repo1.maven.org/maven2</url>
+        </repository>
+        <repository>
+          <id>github-ag04-quarkus-cache</id>
+          <url>https://maven.pkg.github.com/ag04/quarkus-cache</url>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+
+  <servers>
+    <server>
+      <id>github</id>
+      <username>YOUR_USERNAME</username>
+      <password>YOUR_PAT_WITH_READ_ACCESS</password>
+    </server>
+  </servers>
+
+</settings>
+```
+For more see:
+* [Personal GitHub access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+
+### Running
+
 For **geodata-test-quarkus** application to be run you need to specify one runtime env variable **GR_LIQUIBASE_ENABLED** with value set to `true` or `false`.
 This variable controls if **geodata-test-quarkus** liquibase is enabled or not. 
 
