@@ -25,6 +25,7 @@ services:
       - INFINISPAN-SERVER-LIST=host.docker.internal:11222
       - INFINISPAN-USER=admin
       - INFINISPAN-PWD=secret
+      - REDIS_ADDRESS=redis://redis:6379
     # On macOSX and Windows env comment the following two lines, they are linux workaround
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -32,3 +33,9 @@ services:
     # remove the "127.0.0.1:" prefix
     ports:
       - 127.0.0.1:8080:8080
+  redis:
+    image: redis
+    ports:
+      - 127.0.0.1:6379:6379
+    healthcheck:
+      test: [ "CMD", "redis-cli","ping" ]
